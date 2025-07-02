@@ -372,7 +372,7 @@ const About: React.FC = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="h-64 lg:h-auto">
                   <img
-                    src="/WhatsApp Image 2025-07-01 at 23.08.42_2584f98c.jpg"
+                    src="\Screenshot 2025-07-02 225722.png"
                     alt="Mr. P. Venkittaswamy - Chief Technical Advisor"
                     className="w-full h-full object-cover"
                   />
