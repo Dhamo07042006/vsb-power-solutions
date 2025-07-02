@@ -1,16 +1,7 @@
-import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Facebook, Clock, Send, User, MessageSquare } from 'lucide-react';
+import React from 'react';
+import { MapPin, Phone, Mail, Facebook, Clock } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-    serviceType: ''
-  });
-
   const serviceLocations = [
     'Coimbatore',
     'Chennai',
@@ -21,28 +12,6 @@ const Contact: React.FC = () => {
     'Trichy',
     'Thanjavur'
   ];
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! We will contact you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-      serviceType: ''
-    });
-  };
 
   return (
     <div className="py-16 bg-gray-50">
@@ -56,7 +25,7 @@ const Contact: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Information */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-6 mb-8">
@@ -134,137 +103,73 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
+          {/* Additional Information */}
+          <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Why Choose VSB Power Solutions?</h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
-                    </label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        placeholder="Enter your full name"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        placeholder="Enter your email address"
-                      />
-                    </div>
+                    <h3 className="font-semibold text-gray-900">Expert Consultation</h3>
+                    <p className="text-gray-600 text-sm">Free site assessment and customized solar solutions</p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number *
-                    </label>
-                    <div className="relative">
-                      <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                        className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                        placeholder="Enter your phone number"
-                      />
-                    </div>
+                    <h3 className="font-semibold text-gray-900">Quality Components</h3>
+                    <p className="text-gray-600 text-sm">Premium Tier-1 solar panels and inverters with warranties</p>
                   </div>
+                </div>
 
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
-                    <label htmlFor="serviceType" className="block text-sm font-medium text-gray-700 mb-2">
-                      Service Interest
-                    </label>
-                    <select
-                      id="serviceType"
-                      name="serviceType"
-                      value={formData.serviceType}
-                      onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    >
-                      <option value="">Select a service</option>
-                      <option value="rooftop-solar">Grid-Connected Rooftop Solar</option>
-                      <option value="off-grid">Off-Grid Solar Plant</option>
-                      <option value="solar-pumps">Solar Pumps</option>
-                      <option value="street-lighting">Solar Street Lighting</option>
-                      <option value="battery-storage">Solar Battery Storage</option>
-                      <option value="maintenance">Maintenance & Support</option>
-                      <option value="consultation">General Consultation</option>
-                    </select>
+                    <h3 className="font-semibold text-gray-900">Complete Service</h3>
+                    <p className="text-gray-600 text-sm">From design to installation and ongoing maintenance</p>
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                    placeholder="Brief subject of your inquiry"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <div className="relative">
-                    <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                      placeholder="Please describe your solar energy requirements, property details, or any specific questions you have..."
-                    ></textarea>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Government Support</h3>
+                    <p className="text-gray-600 text-sm">Assistance with subsidies and regulatory approvals</p>
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white font-semibold py-3 px-6 rounded-md hover:from-green-700 hover:to-blue-700 transition-colors duration-200 flex items-center justify-center"
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">24/7 Support</h3>
+                    <p className="text-gray-600 text-sm">Round-the-clock monitoring and technical assistance</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Performance Guarantee</h3>
+                    <p className="text-gray-600 text-sm">25-year performance warranty on all installations</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 p-4 bg-green-50 rounded-lg">
+                <h3 className="font-semibold text-green-800 mb-2">Ready to Get Started?</h3>
+                <p className="text-green-700 text-sm mb-3">
+                  Call us today for a free consultation and site assessment. Our experts will help you design the perfect solar solution for your needs.
+                </p>
+                <a
+                  href="tel:+918870367617"
+                  className="inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors duration-200 text-sm font-medium"
                 >
-                  <Send className="h-5 w-5 mr-2" />
-                  Send Message
-                </button>
-              </form>
+                  Call Now: +91 88703 67617
+                </a>
+              </div>
             </div>
           </div>
         </div>
